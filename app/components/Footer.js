@@ -14,8 +14,8 @@ export default function Footer() {
         </div>
         <div className="px-10 grid grid-cols-2 gap-5 md:grid-cols-3 justify-around ">
             <div className="flex flex-col gap-1 w-[120px]">
-                <h4 className="text-lg font-bold">Korisnici</h4>
-                <ul className="text-sm flex flex-col gap-1 text-gray-400">
+                <h4 className="text-lg font-bold md:text-xl">Korisnici</h4>
+                <ul className="text-sm flex flex-col gap-1 text-gray-400 md:text-md">
                     <li><Link href="/radnici">Pronađi radnike</Link></li>
                     <li><Link href="/objavi-posao">Objavi posao</Link></li>
                     <li><Link href="/poslovi">Poslovi</Link></li>
@@ -23,16 +23,16 @@ export default function Footer() {
                 </ul>
             </div>
             <div className="flex flex-col gap-1 md:ml-[30%]">
-                <h4 className="text-lg font-bold">Radnici</h4>
-                <ul className="text-sm flex flex-col gap-1 text-gray-400"> 
+                <h4 className="text-lg font-bold md:text-xl">Radnici</h4>
+                <ul className="text-sm flex flex-col gap-1 text-gray-400 md:text-md"> 
                     <li><Link href="/uredi-profil">Postani radnik</Link></li>
                     <li><Link href="/pomoc">Pomoć</Link></li>
                     <li><Link href="/resursi">Resursi</Link></li>
                 </ul>
             </div>
             <div className="flex flex-col gap-1 md:ml-[30%]">
-                <h4 className="text-lg font-bold">Podrška</h4>
-                <ul className="text-sm flex flex-col gap-1 text-gray-400">
+                <h4 className="text-lg font-bold md:text-xl">Podrška</h4>
+                <ul className="text-sm flex flex-col gap-1 text-gray-400 md:text-md">
                     <li><Link href="/kontakt">Kontakt</Link></li>
                     <li><Link href="/faq">FAQ</Link></li>
                     <li><Link href="/uslovi-koriscenja">Uslovi korišćenja</Link></li>
