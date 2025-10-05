@@ -9,11 +9,12 @@ export default function Header() {
     const [isNavOpen, setIsNavOpen] = React.useState(false);
     const [isLogged, setIsLogged] = React.useState(false);
 
-  return (
-    <header className={`border-b top-0 left-0 bg-white border-gray-300 fixed w-full z-50 ${isNavOpen ? 'h-screen' : 'h-auto'} md:h-auto md:flex justify-between md:px-[3%] md:py-3 md:items-center md:gap-[1%] md:text-sm lg:text-base`}>
+  return (<>
+    { isNavOpen && <div onClick={() => setIsNavOpen(false)} className='fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.1)] md:hidden'></div>}
+    <header className={`border-b top-0 left-0 bg-white border-gray-300 fixed w-full z-50 md:h-auto md:flex justify-between md:px-[3%] md:py-3 md:items-center md:gap-[1%] md:text-sm lg:text-base`}>
         <div className='flex items-center justify-between px-[5vw] py-4 border-gray-300 border-b md:p-0 md:border-0'>
             <div className='flex items-center gap-2'>
-                <Wrench color='blue' size={32}/>
+                <Wrench size={32} className='text-blue-400'/>
                 <Link href="/" className='font-bold text-2xl text-nowrap'>Radnik App</Link>
             </div>
             <div className='md:hidden'>
@@ -32,6 +33,7 @@ export default function Header() {
                 {!isLogged ? <Link href="/registracija">Registruj se</Link> : <Link href="/odjava">Odjavi se</Link>}
             </button>
         </div>
-    </header>
+
+    </header></>
   )
 }
