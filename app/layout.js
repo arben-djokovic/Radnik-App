@@ -5,10 +5,10 @@ import "./globals.css";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="text-gray-800 bg-white pt-16 md:pt-14">
+    <html lang="en" className="h-full">
+      <body className="text-gray-800 h-full bg-white pt-16 md:pt-14">
         <Header />
-        <main className="min-h-[80vh]">
+        <main className="min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)]">
           {children}
         </main>
         <Footer />
