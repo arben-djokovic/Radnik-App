@@ -1,16 +1,18 @@
 'use client'
 import React from 'react'
-import Logo from '../components/Logo'
 import Link from 'next/link'
 import { Lock, Mail } from 'lucide-react'
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
+  const errorRef = React.useRef(null)
 
   const logIn = (e) => {
     e.preventDefault()
     // Logic for logging in the user
+    if(true) return errorRef.current.classList.remove('hidden');
+    errorRef.current.classList.add('hidden');
   }
   
   return (
@@ -18,6 +20,7 @@ export default function LoginPage() {
       <form onSubmit={logIn} className='bg-white border border-gray-300 p-8 rounded-lg shadow-md flex flex-col gap-2 w-full max-w-md'>
         <h2 className='text-2xl font-bold'>Prijavite se</h2>
         <p className='text-xs md:text-sm'>Unesite svoje podatke da pristupite nalogu</p>
+        <p ref={errorRef} className="hidden text-sm text-red-500">Pogrešan email ili lozinka</p>
         <div className='flex flex-col gap-4 my-4'>
           <div className='flex flex-col gap-1'>
             <p>Email:</p>
