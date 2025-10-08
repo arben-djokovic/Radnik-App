@@ -1,9 +1,9 @@
 import { Lock, Mail, MapIcon, Phone, User } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import CitySelect from "../components/CitySelect";
 
 export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, finishRegistration, setName, setEmail, setPassword, setPhone, setCity, name, email, password, phone, city }) {
-
   const nameErrorRef = React.useRef(null);
   const emailErrorRef = React.useRef(null);
   const passwordErrorRef = React.useRef(null);
@@ -123,16 +123,7 @@ export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, 
         </div>
         <div className="flex flex-col gap-1">
           <p>Grad * <span ref={cityErrorRef} className="hidden text-xs ml-auto text-red-500">Unesite vas grad</span></p>
-          <div className="relative">
-            <MapIcon className="absolute top-2 left-2 text-gray-400" size={16} />
-            <input
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              type="text"
-              placeholder="Podgorica"
-              className="border pl-8 border-gray-300 p-1 w-full rounded-md"
-            />
-          </div>
+          <CitySelect selectedCity={city} setSelectedCity={setCity} />
         </div>
         <div className="flex flex-row gap-1 mt-2">
             <button onClick={() => {setIsChooseType(true); setIsForm(false)}} className="w-full bg-white text-black py-1 rounded-md border border-gray-400 cursor-pointer mt-2 hover:bg-gray-50">

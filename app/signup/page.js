@@ -35,7 +35,7 @@ export default function SingupPage() {
 
   return (
     <div className='bg-bg-blue h-full min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center gap-6 p-5'>
-      <div className='bg-white border border-gray-300 p-8 rounded-lg shadow-md flex flex-col gap-2 w-full max-w-md'>
+      <div className='bg-white border border-gray-300 p-8 rounded-lg shadow-md flex flex-col gap-2 w-full max-w-xl'>
         {isChooseType && <ChooseType type={type} setType={setType} setIsChooseType={setIsChooseType} setIsForm={setIsForm} />}
         {isForm && type !== null && <Form type={type} setIsChooseType={setIsChooseType} setIsForm={setIsForm} setIsCategory={setIsCategory} finishRegistration={finishRegistration} setName={setName} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setCity={setCity} name={name} email={email} password={password} phone={phone} city={city} />}
         {isCategory && type === 'worker' && <Category setIsCategory={setIsCategory} setIsForm={setIsForm} finishRegistration={finishRegistration} categories={categories} setCategories={setCategories} about={about} setAbout={setAbout} />}

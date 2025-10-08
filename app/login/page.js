@@ -17,7 +17,7 @@ export default function LoginPage() {
   
   return (
     <div className='bg-bg-blue min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center gap-6 p-5'>
-      <form onSubmit={logIn} className='bg-white border border-gray-300 p-8 rounded-lg shadow-md flex flex-col gap-2 w-full max-w-md'>
+      <form onSubmit={logIn} className='bg-white border border-gray-300 p-8 rounded-lg shadow-md flex flex-col gap-2 w-full max-w-xl'>
         <h2 className='text-2xl font-bold'>Prijavite se</h2>
         <p className='text-xs md:text-sm'>Unesite svoje podatke da pristupite nalogu</p>
         <p ref={errorRef} className="hidden text-sm text-red-500">Pogrešan email ili lozinka</p>

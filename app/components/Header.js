@@ -26,10 +26,10 @@ export default function Header() {
         <div className={`${isNavOpen ? 'block' : 'hidden'} flex flex-col gap-3 py-7 px-2 border-b border-gray-300 md:flex md:border-0 md:flex-row md:p-0 md:gap-[2%]`}>           
            
            <Link href={!isLogged ? '/login' : '/profile'} onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 text-center border border-gray-300 cursor-pointer hover:bg-gray-100 rounded-md'>
-                {!isLogged ? <button>Prijavi se</button> : <button>Moj profil</button>}
+                {!isLogged ? <button className='cursor-pointer'>Prijavi se</button> : <button className='cursor-pointer'>Moj profil</button>}
             </Link>
             <Link href={!isLogged ? '/signup' : '/logout'} onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 bg-black text-center text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md'>
-                {!isLogged ? <button>Registruj se</button> : <button>Odjavi se</button>}
+                {!isLogged ? <button className='cursor-pointer'>Registruj se</button> : <button className='cursor-pointer'>Odjavi se</button>}
             </Link>
         </div>
 

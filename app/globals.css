@@ -3,3 +3,7 @@
 @theme base {
     --color-bg-blue: #EFF6FF;
 }
+html {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}
