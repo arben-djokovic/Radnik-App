@@ -2,6 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+export const metadata = {
+  title: 'Radnik App - Page not found',
+  description: 'Stranica nije pronađena.',
+}
+
 export default function NotFound() {
   return (
     <div className='min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center'>
