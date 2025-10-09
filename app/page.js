@@ -10,11 +10,11 @@ export default function Home() {
           <div className="flex flex-col gap-5 md:flex-row">
             <button className="flex gap-2 justify-center items-center py-2 px-5 w-[70vw] bg-black text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md md:w-[300px]">
               <Users />
-              <Link href="/radnici">Trazim radnika</Link>
+              <Link href="/workers">Trazim radnika</Link>
             </button>
             <button className="flex gap-2 justify-center items-center py-2 px-5 w-[70vw] bg-white text-black border border-gray-300 cursor-pointer hover:bg-gray-100 rounded-md md:w-[300px]">
               <Wrench />
-              <Link href="/objavi-posao">Objavi posao</Link>
+              <Link href="/post-job">Objavi posao</Link>
             </button>
           </div>
 
@@ -125,9 +125,11 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="py-16 px-5 flex flex-col items-center gap-2 bg-whit text-center">
-      <h2 className="text-3xl font-bold lg:text-4xl">Spremni da počnete?</h2>
-      <p>Pridružite se hiljadama zadovoljnih korisnika već danas</p>
+    <section className="py-20 px-5 flex flex-col items-center gap-5 bg-whit text-center">
+      <div className="flex flex-col gap-1">
+        <h2 className="text-3xl font-bold lg:text-4xl">Spremni da počnete?</h2>
+        <p>Pridružite se hiljadama zadovoljnih korisnika već danas</p>
+      </div>
       <button className="max-w-[600px] w-full py-1 bg-black text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md"><Link href="/signup">Napravi nalog</Link></button>
     </section>
   </main>

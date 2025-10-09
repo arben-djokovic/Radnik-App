@@ -46,7 +46,7 @@ export default function PostJob() {
     }
   };
   return (
-    <div className="bg-bg-blue min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center gap-6 p-5">
+    <div className="bg-bg-blue min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center gap-6 p-5 py-10">
       <div className="w-full max-w-2xl flex flex-col gap-1">
         <h1 className="text-3xl font-bold md:text-4xl">Objavi posao</h1>
         <p className="text-xs md:text-sm">
