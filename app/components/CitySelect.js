@@ -17,7 +17,7 @@ export default function CitySelect({ selectedCity, setSelectedCity }) {
             </span>
           </ListboxButton>
 
-          <ListboxOptions className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md border border-gray-200 bg-white py-1 text-base shadow-lg focus:outline-none">
+          <ListboxOptions className="absolute mt-1 max-h-60 w-auto min-w-full overflow-auto rounded-md border border-gray-200 bg-white py-1 text-base shadow-lg focus:outline-none z-10">
             {cities.map((city, index) => (
               <ListboxOption
                 key={index}

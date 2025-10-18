@@ -1,5 +1,4 @@
 import { Lock, Mail, MapIcon, Phone, User } from "lucide-react";
-import Link from "next/link";
 import React from "react";
 import CitySelect from "../components/CitySelect";
 
