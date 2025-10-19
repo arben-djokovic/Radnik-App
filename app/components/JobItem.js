@@ -1,4 +1,4 @@
-import { Calendar, Image, MapPin, MessageSquare } from 'lucide-react'
+import { Calendar, MapPin, MessageSquare } from 'lucide-react'
 import React from 'react'
 
 export default function JobItem() {

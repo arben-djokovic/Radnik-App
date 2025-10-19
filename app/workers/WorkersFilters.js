@@ -7,13 +7,12 @@ import CitySelect from "../components/CitySelect";
 import SelectCategoryFilter from "../components/SelectCategoryFilter";
 
 const sortBy = [
-  {id: 1, name: "Najnovije"},
-  {id: 2, name: "Najhitniji"},
-  {id: 3, name: "Najmanje prijava"},
+  {id: 1, name: "Najbolje ocjenjeni"},
+  {id: 2, name: "Najvise recenzija"},
 ]
 
 
-export default function JobFilters() {
+export default function WorkersFilters() {
   const [selectedCategory, setSelectedCategory] = React.useState({id: 1, name: "Sve kategorije"});
   const [selectedCity, setSelectedCity] = React.useState(null);
   const [selectedSort, setSelectedSort] = React.useState(sortBy[0]);

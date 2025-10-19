@@ -1,7 +1,6 @@
 "use client";
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from "@headlessui/react";
 import { Check, ChevronDown } from "lucide-react";
-import { useState } from "react";
 
 export default function CategorySelect({ selectedCategory, setSelectedCategory }) {
   const categories = ["Vodoinstalateri", "Električari", "Moleri", "Stolarija", "Klimatizacija", "Opšti radovi"];
