@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-export default function page() {
+export default function Page() {
   const [songs, setSongs] = useState([])
   const [genres, setGenres] = useState([])
 
