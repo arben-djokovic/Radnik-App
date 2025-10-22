@@ -36,7 +36,7 @@ export default function Page() {
       <div className='border border-black'>
         <h1>songs</h1>
         <div>
-          {songs.map((song) => (
+          {Array.isArray(songs.songs) && songs.songs.length > 0 && songs.songs.map((song) => (
             <div key={song._id}>
               {song.title}
             </div>
@@ -46,7 +46,7 @@ export default function Page() {
       <div className='border border-black'>
         <h1>genres</h1>
         <div>
-          {genres.map((genre) => (
+          {Array.isArray(genres.genres) && genres.genres.length > 0 && genres.genres.map((genre) => (
             <div key={genre._id}>
               {genre.name}
             </div>
