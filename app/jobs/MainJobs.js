@@ -1,6 +1,7 @@
 import React from 'react'
 import JobFilters from './JobFilters'
 import JobItem from '../components/JobItem'
+import PaginationContainer from '../components/PaginationContainer'
 
 const jobs = [
   {id: 1},
@@ -14,10 +15,11 @@ export default function MainJobs() {
   return (
     <div className='w-full max-w-5xl flex flex-col gap-5'>
         <JobFilters />
-        <p className='text-gray-500 text-md'>Pronađeno 6 poslova</p>
-        <div className='flex flex-col gap-5'>
+        <p className='text-gray-500 text-md'>Pronađeno {jobs.length} poslova</p>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
           {jobs.map(job => <JobItem key={job.id} job={job} />)}
         </div>
+        <PaginationContainer currentPage={1} totalPages={10} />
     </div>
   )
 }

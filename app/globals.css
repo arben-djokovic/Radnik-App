@@ -7,3 +7,11 @@ html {
     overflow: auto !important;
     padding-right: 0 !important;
 }
+button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+button:disabled{
+    cursor: not-allowed;
+    opacity: 1;
+}

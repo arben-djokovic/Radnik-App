@@ -1,14 +1,18 @@
 import { MapPin, StarIcon } from 'lucide-react'
 import React from 'react'
 
-export default function WorkerItem() {
+export default function WorkerItem({worker}) {
   return (
-    <div className='flex flex-col gap-3 md:max-w-sm border border-gray-300 p-5 rounded-md w-full'>
+    <div className='flex flex-col gap-3 border border-gray-300 p-5 rounded-md w-full justify-between'>
         <div>
             <h2 className='text-lg font-bold'>Marko Jovanovic</h2>
-            <p className='flex flex-col text-sm text-blue-500'>
+            <p className='text-sm text-blue-500'>
                 <span>Vodoinstalateri</span>
-                <span>Opsti radovi</span>
+                {worker % 2 == 0 && <><span className='text-black'>{" | "}</span><span>Električari</span><span className='text-black'>{" | "}</span></>}
+                {worker % 2 == 0 && <><span>Moleri</span><span className='text-black'>{" | "}</span></>}
+                {worker % 2 == 0 && <><span>Stolarija</span><span className='text-black'>{" | "}</span></>}
+                {worker % 2 == 0 && <><span>Klimatizacija</span><span className='text-black'>{" | "}</span></>}
+                {worker % 2 == 0 && <><span>Opsti radovi</span></>}
             </p>
         </div>
         <div className='flex gap-3 items-center'>

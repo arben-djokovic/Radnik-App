@@ -15,7 +15,6 @@ export default function JobsPageContainer() {
         </p>
       </div>
       <MainJobs />
-
     </div>
   )
 }
