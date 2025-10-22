@@ -4,11 +4,8 @@ import Link from "next/link";
 //fetch songs
 
 export default async function Home() {
- const songs = await fetch('https://repertorify.com/api/songs', { cache: 'no-store' })
-    .then(res => res.json());
     
 return (<main>
-    {songs.map((song) => <div key={song._id}>{song.title}</div>)}
     <section className="bg-bg-blue flex flex-col items-center justify-center text-center p-16 min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] ">
        <div className="flex flex-col items-center justify-center gap-5 max-w-[700px]">
           <h1 className="text-4xl font-bold md:text-5xl max-w-[500px]">Pronađi <span className="text-blue-400">stručnjaka</span> za svaki posao</h1>
