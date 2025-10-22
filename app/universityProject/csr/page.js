@@ -6,19 +6,28 @@ export default function Page() {
   const [genres, setGenres] = useState([])
 
   useEffect(() => {
+
     const getSongs = async () => {
-      const response = await fetch('https://repertorify.com/api/songs')
-      const data = await response.json()
-      setSongs(data)
+      try{
+        const response = await fetch('https://repertorify.com/api/songs')
+        const data = await response.json()
+        setSongs(data)
+      }catch(err){
+        console.log(err)
+      }
     }
     getSongs()
   }, [])
 
     useEffect(() => {
     const getGeneres = async () => {
-      const response = await fetch('https://repertorify.com/api/genres')
-      const data = await response.json()
-      setGenres(data)
+      try{
+        const response = await fetch('https://repertorify.com/api/genres')
+        const data = await response.json()
+        setGenres(data)
+      }catch(err){
+        console.log(err)
+      }
     }
     getGeneres()
   }, [])
