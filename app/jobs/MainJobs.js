@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import JobFilters from './JobFilters'
 import JobItem from '../components/JobItem'
 import PaginationContainer from '../components/PaginationContainer'
@@ -19,7 +19,9 @@ export default function MainJobs() {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
           {jobs.map(job => <JobItem key={job.id} job={job} />)}
         </div>
-        <PaginationContainer currentPage={1} totalPages={10} />
+        <Suspense fallback={null}>
+          <PaginationContainer totalPages={10} />
+        </Suspense>
     </div>
   )
 }

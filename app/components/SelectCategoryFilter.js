@@ -5,9 +5,12 @@ import { CheckIcon, ChevronDownIcon } from 'lucide-react'
 
 const categories = [
   { id: 1, name: 'Sve kategorije' },
-  { id: 2, name: 'Elektricar' },
-  { id: 3, name: 'Vodoinstalater' },
-  { id: 4, name: 'Opsti radovi' },
+  { id: 2, name: 'Vodoinstalater' },
+  { id: 3, name: 'Elektricar' },
+  { id: 4, name: 'Moleri' },
+  { id: 5, name: 'Stolarija' },
+  { id: 6, name: 'Klimatizacija' },
+  { id: 7, name: 'Opsti radovi' },
 ]
 
 

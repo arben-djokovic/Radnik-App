@@ -1,7 +1,8 @@
 import { Calendar, MapPin, MessageSquare } from 'lucide-react'
 import React from 'react'
+import Link from 'next/link'
 
-export default function JobItem() {
+export default function JobItem({noButtons}) {
   return (
     <div className='flex flex-col gap-5 border border-gray-300 p-5 rounded-md'>
         <div className='flex flex-col gap-2'>
@@ -27,12 +28,13 @@ export default function JobItem() {
                 <div className='rounded-full border border-black w-10 h-10 bg-gray-600'></div>
                 <p>Marko Jovanovic</p>
             </div>
+            {!noButtons &&
             <div className='flex md:flex-row flex-col gap-2'>
                 <button className='bg-white text-black border border-black py-1 px-3 rounded-md cursor-pointer hover:bg-gray-100 w-full md:w-auto'>
                     <span className="flex gap-1 w-full justify-center items-center"><MessageSquare size={15} /> Kontakt</span>
                 </button>
-                <button className='bg-black text-white border border-black py-1 px-3 rounded-md cursor-pointer hover:bg-gray-800 w-full'>Prijavi se</button>
-            </div>
+                <Link href={'/jobs/1'} className='bg-black text-white border border-black py-1 px-3 rounded-md text-center cursor-pointer hover:bg-gray-800 w-full'>Prijavi se</Link>
+            </div>}
         </div>
     </div>
   )

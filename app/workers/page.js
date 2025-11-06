@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import WorkersFilters from "./WorkersFilters";
 import WorkerItem from "../components/WorkerItem";
 import PaginationContainer from "../components/PaginationContainer";
@@ -18,7 +18,9 @@ export default function WorkersPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-full">
           {[1,2,3,4,5,6,7,8,9,10,11,12].map(worker => <WorkerItem key={worker} worker={worker} />)}
         </div>
-        <PaginationContainer currentPage={4} totalPages={7} />
+        <Suspense fallback={null}>
+          <PaginationContainer totalPages={10} />
+        </Suspense>
       </div>
     </div>
   );
