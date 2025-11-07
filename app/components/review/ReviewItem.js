@@ -21,9 +21,7 @@ export default function ReviewItem() {
                 <Star size={16} className='text-yellow-400' />
             </div>
         </div>
-        <p>
-            "Odličan rad, brzo i profesionalno. Ana je stigla tačno na vreme i rešila problem sa električnom tablom za manje od sat vremena. Topla preporuka!"
-        </p>
+        <p>Odličan rad, brzo i profesionalno. Ana je stigla tačno na vreme i rešila problem sa električnom tablom za manje od sat vremena. Topla preporuka!</p>
     </div>
   )
 }
