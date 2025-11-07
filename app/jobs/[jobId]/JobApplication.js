@@ -29,7 +29,7 @@ export default function JobApplication() {
                 <div className="text-sm flex gap-5 mt-1">
                     <div className='flex gap-1 items-center'>
                         <StarIcon size={20} color='gold' />
-                        <p>4.8</p>
+                        <p>4.8 (8 recenzija)</p>
                     </div>
                     <p>Aplicirao prije 2 sata</p>
                 </div>

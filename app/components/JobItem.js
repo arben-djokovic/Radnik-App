@@ -1,4 +1,4 @@
-import { Calendar, MapPin, MessageSquare } from 'lucide-react'
+import { Calendar, CircleUserRound, MapPin, MessageSquare } from 'lucide-react'
 import React from 'react'
 import Link from 'next/link'
 
@@ -25,7 +25,7 @@ export default function JobItem({noButtons}) {
         <p>Potrebno je popraviti slavinu u kuhinji koja curi. Slavina je stara oko 5 godina, mislim da treba zameniti zaptivač. Hitno je jer se voda troši nepotrebno. Mogu da obezbedim materijal ako je potrebno.</p>
         <div className='flex flex-col gap-3'>
             <div className='flex gap-2 cursor-pointer hover:opacity-80'>
-                <div className='rounded-full border border-black w-10 h-10 bg-gray-600'></div>
+                <CircleUserRound size={45} />
                 <p>Marko Jovanovic</p>
             </div>
             {!noButtons &&

@@ -2,17 +2,23 @@
 import React from 'react'
 import Link from 'next/link'
 import { Lock, Mail } from 'lucide-react'
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const errorRef = React.useRef(null)
+  const router = useRouter();
 
   const logIn = (e) => {
     e.preventDefault()
-    // Logic for logging in the user
-    if(true) return errorRef.current.classList.remove('hidden');
+    if(!email || !password) {
+      errorRef.current.classList.remove('hidden');
+      return
+    }
     errorRef.current.classList.add('hidden');
+    localStorage.setItem('isLogged', true)
+    return router.push('/profile');
   }
   
   return (

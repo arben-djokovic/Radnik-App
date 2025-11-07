@@ -1,14 +1,27 @@
 'use client'
 
 import { Menu, X} from 'lucide-react';
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from './Nav';
 import Link from 'next/link';
 import Logo from './Logo';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = React.useState(false);
     const [isLogged, setIsLogged] = React.useState(false);
+    const pathname = usePathname();
+    const router = useRouter();
+
+    const logOut = () => {
+        localStorage.removeItem('isLogged')
+        setIsLogged(false)
+        router.push('/')
+    }
+
+    useEffect(() => {
+        setIsLogged(localStorage.getItem('isLogged') || false);
+    }, [pathname])
 
   return (<>
     { isNavOpen && <div onClick={() => setIsNavOpen(false)} className='fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.1)] md:hidden'></div>}
@@ -28,9 +41,9 @@ export default function Header() {
            <Link href={!isLogged ? '/login' : '/profile'} onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 text-center border border-gray-300 cursor-pointer hover:bg-gray-100 rounded-md'>
                 {!isLogged ? <button className='cursor-pointer'>Prijavi se</button> : <button className='cursor-pointer'>Moj profil</button>}
             </Link>
-            <Link href={!isLogged ? '/signup' : '/logout'} onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 bg-black text-center text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md'>
-                {!isLogged ? <button className='cursor-pointer'>Registruj se</button> : <button className='cursor-pointer'>Odjavi se</button>}
-            </Link>
+            <div onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 bg-black text-center text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md'>
+                {!isLogged ? <Link href="/signup"><button className='cursor-pointer'>Registruj se</button></Link> : <button onClick={logOut} className='cursor-pointer'>Odjavi se</button>}
+            </div>
         </div>
 
     </header></>
