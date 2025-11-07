@@ -26,14 +26,14 @@ export default function JobApplication() {
                     <span className='text-black'>{" | "}</span><span>Električari</span><span className='text-black'>{" | "}</span>
                     <span>Moleri</span>
                 </p>
-                <div className="text-sm flex gap-5 mt-1">
-                    <div className='flex gap-1 items-center'>
-                        <StarIcon size={20} color='gold' />
-                        <p>4.8 (8 recenzija)</p>
-                    </div>
-                    <p>Aplicirao prije 2 sata</p>
-                </div>
             </div>
+        </div>
+        <div className="text-sm flex gap-5 mt-1">
+            <div className='flex gap-1 items-center'>
+                <StarIcon size={20} color='gold' />
+                <p className="text-center font-bold">4.8 <span className="whitespace-nowrap font-normal">(8 recenzija)</span></p>
+            </div>
+            <p className="text-center">Aplicirao prije 2 sata</p>
         </div>
         <div className="text-sm">
             <p className="font-bold">Ponuda:</p>

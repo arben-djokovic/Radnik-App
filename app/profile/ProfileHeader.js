@@ -1,7 +1,7 @@
-import { Briefcase, Calendar, CircleUserRound, MapPin, Phone, StarIcon } from 'lucide-react'
+import { Briefcase, Calendar, CircleUserRound, Edit, MapPin, Phone, StarIcon } from 'lucide-react'
 import React from 'react'
 
-export default function ProfileHeader() {
+export default function ProfileHeader({isMe}) {
   return (
     <div className='border border-gray-300 p-5 rounded-md w-full flex flex-col gap-5'>
         <div className='flex gap-5 w-full'>
@@ -31,10 +31,16 @@ export default function ProfileHeader() {
                 </div>
             </div>
         </div>
-        <button className='bg-black text-white w-full p-1 rounded-md text-center flex items-center justify-center gap-2'>
-            <Phone size={20} />
-            <p>Pozovi</p>
-        </button>
+        <div className='flex items-center gap-1'>
+            <button className='bg-black text-white w-full p-1.5 rounded-md text-center flex items-center justify-center gap-2'>
+                <Phone size={20} />
+                <p>Pozovi</p>
+            </button>
+            {isMe && <button className='bg-white text-black p-1.5 rounded-md text-center flex items-center justify-center gap-2 border border-black whitespace-nowrap w-full md:w-auto'>
+                <Edit size={20} />
+                <p>Uredi profil</p>
+            </button>}
+        </div>
     </div>
   )
 }
