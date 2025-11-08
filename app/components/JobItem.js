@@ -9,7 +9,7 @@ export default function JobItem({noButtons}) {
             <div className='flex items-start justify-between'>
                 <div>
                     <h2 className='font-bold text-xl'>Popravka slavine u kuhinji</h2>
-                    <p className='flex gap-1 text-blue-600 text-sm cursor-pointer hover:opacity-80'>Vodoinstalateri</p>
+                    <p className='flex gap-1 text-blue-500 text-sm cursor-pointer hover:opacity-80'>Vodoinstalateri</p>
                 </div>
                 {/* <p className='text-xs border border-red-800 bg-red-50 text-red-800 py-1 px-2 font-bold rounded-md text-nowrap'>Hitno (danas)</p> */}
                 {/* <p className='text-xs border border-green-800 bg-green-50 text-green-800 py-1 px-2 font-bold rounded-md text-nowrap'>Normalno (1-2 nedelje)</p> */}

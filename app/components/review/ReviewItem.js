@@ -6,7 +6,7 @@ export default function ReviewItem() {
   return (
     <div className='border-b border-t border-gray-300 py-2'>
         <div className='flex items-center justify-between'>
-            <Link href="/user/1" className='flex items-center gap-3'>
+            <Link href="/users/1" className='flex items-center gap-3'>
                 <CircleUserRound size={30} />
                 <div>
                     <p className='font-bold'>Marko Jovanovic</p>
