@@ -1,4 +1,5 @@
-import { MapPin, StarIcon } from 'lucide-react'
+import { MapPin, Phone, StarIcon } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 export default function WorkerItem({worker}) {
@@ -29,8 +30,13 @@ export default function WorkerItem({worker}) {
             Iskusni vodoinstalater sa 15 godina iskustva. Specijalizovan za hitne intervencije i renoviranje kupatila.
         </p>
         <div className='flex items-center gap-2'>
-            <button className='cursor-pointer w-full bg-black text-white border border-black py-1 px-3 rounded-md'>Kontaktiraj</button>
-            <button className='cursor-pointer bg-white text-black border border-black py-1 px-3 rounded-md'>Profil</button>
+            <Link href={`tel:+38161234567`} className='text-center cursor-pointer w-full bg-black text-white border border-black py-1 px-3 rounded-md'>
+                <div className='flex items-center gap-1 w-full text-center justify-center'>
+                    <Phone size={15} /> 
+                    <p>Pozovi</p>
+                </div>
+            </Link>
+            <Link href={`/users/1`} className='cursor-pointer bg-white text-black border border-black py-1 px-3 rounded-md'>Profil</Link>
         </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { Calendar, CircleUserRound, MapPin, MessageSquare } from 'lucide-react'
+import { Calendar, CircleUserRound, MapPin, MessageSquare, User2Icon } from 'lucide-react'
 import React from 'react'
 import Link from 'next/link'
 
@@ -30,10 +30,10 @@ export default function JobItem({noButtons}) {
             </div>
             {!noButtons &&
             <div className='flex md:flex-row flex-col gap-2'>
-                <button className='bg-white text-black border border-black py-1 px-3 rounded-md cursor-pointer hover:bg-gray-100 w-full md:w-auto'>
-                    <span className="flex gap-1 w-full justify-center items-center"><MessageSquare size={15} /> Kontakt</span>
-                </button>
                 <Link href={'/jobs/1'} className='bg-black text-white border border-black py-1 px-3 rounded-md text-center cursor-pointer hover:bg-gray-800 w-full'>Prijavi se</Link>
+                <Link href={'/users/1'} className='bg-white text-black border border-black py-1 px-3 rounded-md cursor-pointer hover:bg-gray-100 w-full md:w-auto'>
+                    <span className="flex gap-1 w-full justify-center items-center"><User2Icon size={20} />Profil</span>
+                </Link>
             </div>}
         </div>
     </div>

@@ -6,7 +6,7 @@ import Link from "next/link";
 export default async function Home() {
     
 return (<main>
-    <section className="bg-bg-blue flex flex-col items-center justify-center text-center p-16">
+    <section className="bg-bg-blue flex flex-col items-center justify-center text-center p-16 min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)]">
        <div className="flex flex-col items-center justify-center gap-5 max-w-[700px]">
           <h1 className="text-4xl font-bold md:text-5xl max-w-[500px]">Pronađi <span className="text-blue-400">stručnjaka</span> za svaki posao</h1>
           <h4 className="text-md md:text-lg">Povezujemo vas sa proverenim radnicima u vašoj blizini. Brzo, sigurno i pouzdano rešavanje svih vaših potreba.</h4>    

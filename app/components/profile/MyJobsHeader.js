@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function MyJobsHeader() {
@@ -7,7 +8,7 @@ export default function MyJobsHeader() {
             <h1 className='font-bold text-2xl'>Moji poslovi</h1>
             <p>Pregled svih vaših objavljenih poslova</p>
         </div>
-        <button className='bg-black text-white border border-black py-1 px-3 rounded-md'>Objavi novi posao</button>
+        <Link href="/post-job" className='bg-black text-white border border-black py-1 px-3 rounded-md'>Objavi novi posao</Link>
     </div>
   )
 }
