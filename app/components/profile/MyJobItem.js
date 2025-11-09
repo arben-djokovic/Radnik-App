@@ -8,10 +8,10 @@ export default function MyJobItem() {
         <h1 className='text-lg font-bold'>Popravka slavine</h1>
         <p className='text-blue-500 text-sm'>Vodoinstalateri</p>
       </div>
-      <div className='text-sm flex gap-2 items-center'>
-          <p>Objavljeno: 15. Dec 2024</p>
-          <p>5 prijava</p>
-          <p>Radnik: Ana Jovanović</p>
+      <div className='text-sm flex gap-5 items-center justify-between text-center md:justify-start'>
+          <p className='flex flex-col items-center gap-1 md:flex-row'><span>Objavljeno:</span> <span>15. Dec 2024</span></p>
+          <p className='flex flex-col items-center gap-1 md:flex-row'><span>5</span> <span>prijava</span></p>
+          <p className='flex flex-col items-center gap-1 md:flex-row'><span>Radnik:</span> <span>Ana Jovanovic</span></p>
       </div>
     </Link>
   )

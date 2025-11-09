@@ -2,7 +2,7 @@ import { User, Wrench } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-export default function ChooseType({ type, setType, setIsChooseType, setIsForm }) {
+export default function ChooseType({ isEdit, type, setType, setIsChooseType, setIsForm }) {
     const [isUser, setIsUser] = React.useState(type === 'user')
     const [isWorker, setIsWorker] = React.useState(type === 'worker')
     const errorRef = React.useRef(null)
@@ -17,7 +17,7 @@ export default function ChooseType({ type, setType, setIsChooseType, setIsForm }
     }
   return (
     <div className='flex flex-col gap-4'>
-        <h2 className='text-2xl font-bold'>Napravite nalog</h2>
+        <h2 className='text-2xl font-bold'>{isEdit ? 'Izmijenite nalog' : 'Napravite nalog'}</h2>
         <p className='text-xs md:text-sm'>Izaberite kako želite da koristite RadnikApp</p>
         <p ref={errorRef} className="hidden text-sm text-red-500">Izaberite jednu od opcija</p>
         <div className='flex flex-col gap-4 mt-2'>
@@ -40,7 +40,7 @@ export default function ChooseType({ type, setType, setIsChooseType, setIsForm }
                 </div>
             </div>
             <button onClick={goNext} className='w-full min-w-[100px] py-1 bg-black text-center text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md'>Nastavi</button>
-            <p className='text-center text-sm'>Već imate nalog? <Link href={'/login'} className='text-blue-400 hover:text-blue-500'>Prijavite se</Link></p>
+            {!isEdit && <p className='text-center text-sm'>Već imate nalog? <Link href={'/login'} className='text-blue-400 hover:text-blue-500'>Prijavite se</Link></p>}
         </div>
     </div>
   )

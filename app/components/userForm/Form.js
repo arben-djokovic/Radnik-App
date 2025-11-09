@@ -1,8 +1,8 @@
 import { Lock, Mail, MapIcon, Phone, User } from "lucide-react";
 import React from "react";
-import CitySelect from "../components/CitySelect";
+import CitySelect from "../CitySelect";
 
-export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, finishRegistration, setName, setEmail, setPassword, setPhone, setCity, name, email, password, phone, city }) {
+export default function Form({ isEdit, setIsChooseType, setIsForm, type, setIsCategory, finishRegistration, setName, setEmail, setPassword, setPhone, setCity, name, email, password, phone, city }) {
   const nameErrorRef = React.useRef(null);
   const emailErrorRef = React.useRef(null);
   const passwordErrorRef = React.useRef(null);
@@ -25,10 +25,10 @@ export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, 
       emailErrorRef.current.classList.add('hidden');
     }
 
-    if(!password || password.length < 6 || password.length > 20) {
+    if(!isEdit && (!password || password.length < 6 || password.length > 20)) {
       passwordErrorRef.current.classList.remove('hidden');
       isValid = false;
-    }else{
+    }else if(!isEdit){
       passwordErrorRef.current.classList.add('hidden');
     }
 
@@ -61,9 +61,9 @@ export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, 
   }
   return (
     <div className="flex flex-col gap-2">
-      <h2 className="text-2xl font-bold">Napravite nalog</h2>
+      <h2 className="text-2xl font-bold">{isEdit ? 'Izmijenite nalog' : 'Napravite nalog'}</h2>
       <p className="text-xs md:text-sm">
-        Izaberite kako želite da koristite RadnikApp
+        Popunite podatke da {isEdit ? 'izmijenite nalog' : 'napravite nalog'}
       </p>
       <div className="flex flex-col gap-2 my-4">
         <div className="flex flex-col gap-1">
@@ -94,7 +94,7 @@ export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, 
             />
           </div>
         </div>
-        <div className="flex flex-col gap-1">
+        {!isEdit && <div className="flex flex-col gap-1">
           <p>Lozinka * <span ref={passwordErrorRef} className="hidden text-xs ml-auto text-red-500">mora imati izmedju 6 i 20 karaktera</span></p>
           <div className="relative">
             <Lock className="absolute top-2 left-2 text-gray-400" size={16} />
@@ -106,7 +106,7 @@ export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, 
               className="border pl-8 border-gray-300 p-1 w-full rounded-md"
             />
           </div>
-        </div>
+        </div>}
         <div className="flex flex-col gap-1">
           <p>Telefon * <span ref={phoneErrorRef} className="hidden text-xs ml-auto text-red-500">Unesite pravilan broj telefona</span></p>
           <div className="relative">
@@ -129,7 +129,7 @@ export default function Form({ setIsChooseType, setIsForm, type, setIsCategory, 
                 Nazad
             </button>
             <button onClick={next} className="w-full bg-black text-white py-1 rounded-md cursor-pointer mt-2 hover:bg-gray-800">
-                Nastavi
+                {type === 'worker' ? 'Nastavi' : 'Napravi nalog'}
             </button>
         </div>
       </div>

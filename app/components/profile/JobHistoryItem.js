@@ -9,7 +9,7 @@ export default function JobHistoryItem() {
             <h2 className='font-bold text-lg'>Ugradnja novih utičnica</h2>
             <p className='text-sm text-blue-500'>Električari</p>
         </div>
-        <div className='flex items-center gap-4 text-sm'>
+        <div className='flex items-start gap-1 text-sm flex-col md:flex-row md:gap-5 md:items-center'>
             <Link href="/user/1" className='flex items-center gap-0.5 hover:underline'>
                 <User size={15} />
                 <p>Klijent: Marko Jovanovic</p>

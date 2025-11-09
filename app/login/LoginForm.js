@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Lock, Mail } from 'lucide-react'
 import { useRouter } from 'next/navigation';
 
-export default function LoginPage() {
+export default function LoginForm() {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const errorRef = React.useRef(null)
@@ -18,11 +18,10 @@ export default function LoginPage() {
     }
     errorRef.current.classList.add('hidden');
     localStorage.setItem('isLogged', true)
-    return router.push('/profile');
+    return router.push('/users/1');
   }
   
   return (
-    <div className='bg-bg-blue min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center gap-6 p-5'>
       <form onSubmit={logIn} className='bg-white border border-gray-300 p-8 rounded-lg shadow-md flex flex-col gap-2 w-full max-w-xl'>
         <h2 className='text-2xl font-bold'>Prijavite se</h2>
         <p className='text-xs md:text-sm'>Unesite svoje podatke da pristupite nalogu</p>
@@ -49,8 +48,5 @@ export default function LoginPage() {
         </div>
         <p className='text-sm text-center'>Nemate nalog? <Link className='text-blue-400 hover:text-blue-500' href={'/signup'}>Registrujte se</Link></p>
       </form>
-
-      <Link className='hover:text-gray-600' href={'/'}>← Nazad na početnu</Link>
-    </div>
   )
 }

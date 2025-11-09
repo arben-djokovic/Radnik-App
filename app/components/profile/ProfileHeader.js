@@ -1,4 +1,5 @@
 import { Briefcase, Calendar, CircleUserRound, Edit, MapPin, Phone, StarIcon } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 
 export default function ProfileHeader({isMe, role}) {
@@ -32,14 +33,19 @@ export default function ProfileHeader({isMe, role}) {
             </div>
         </div>
         <div className='flex items-center gap-1'>
-            {!isMe && <button className='bg-black text-white w-full p-1.5 rounded-md text-center flex items-center justify-center gap-2'>
+            {!isMe && <Link href={`tel:+38269405596`} className='bg-black text-white w-full p-1.5 rounded-md text-center flex items-center justify-center gap-2'>
                 <Phone size={20} />
                 <p>Pozovi</p>
-            </button>}
-            {isMe && <button className='bg-white w-full text-black p-1.5 rounded-md text-center flex items-center justify-center gap-2 border border-black whitespace-nowrap'>
+            </Link>}
+            {isMe && <><Link href="/users/1/edit" className='bg-white w-full text-black p-1.5 rounded-md text-center flex items-center justify-center gap-2 border border-black whitespace-nowrap'>
                 <Edit size={20} />
                 <p>Uredi profil</p>
-            </button>}
+            </Link>
+            <button className='bg-black text-white py-1.5 px-3 rounded-md text-center flex items-center justify-center gap-2 whitespace-nowrap'>
+                {/* <Edit size={20} /> */}
+                <p>Promijeni lozinku</p>
+            </button>
+            </>}
         </div>
     </div>
   )

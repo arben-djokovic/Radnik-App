@@ -1,7 +1,7 @@
 import { Droplets, Hammer, Paintbrush, Settings, Wrench, Zap } from 'lucide-react'
 import React from 'react'
 
-export default function Category({ setIsCategory, setIsForm, finishRegistration, categories, setCategories, about, setAbout }) {
+export default function Category({ isEdit, setIsCategory, setIsForm, finishRegistration, categories, setCategories, about, setAbout }) {
 
     const errorRef = React.useRef(null);
     const checkFields = () => {
@@ -78,7 +78,7 @@ export default function Category({ setIsCategory, setIsForm, finishRegistration,
                 Nazad
             </button>
             <button onClick={handleFinishRegistration} className="w-full bg-black text-white py-1 rounded-md cursor-pointer mt-2 hover:bg-gray-800">
-                Zavrsi registraciju
+                {isEdit ? 'Izmijeni' : 'Zavrsi registraciju'}
             </button>
         </div>
     </div>
