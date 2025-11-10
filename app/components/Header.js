@@ -6,22 +6,25 @@ import Nav from './Nav';
 import Link from 'next/link';
 import Logo from './Logo';
 import { usePathname, useRouter } from 'next/navigation';
+import { logOut, isLogged as isLoggedCheck } from '../config/config';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = React.useState(false);
-    const [isLogged, setIsLogged] = React.useState(false);
+    const [isLogged, setIsLogged] = React.useState(isLoggedCheck());
     const pathname = usePathname();
     const router = useRouter();
 
-    const logOut = () => {
-        localStorage.removeItem('isLogged')
-        setIsLogged(false)
-        router.push('/')
+    const logOutBtn = () => {
+        logOut();
+        router.push('/login')
     }
 
     useEffect(() => {
-        setIsLogged(localStorage.getItem('isLogged') || false);
-    }, [pathname])
+        const handleStorageChange = () => setIsLogged(isLoggedCheck());
+        window.addEventListener('storage', handleStorageChange);
+        return () => window.removeEventListener('storage', handleStorageChange);
+    }, [])
+
 
   return (<>
     { isNavOpen && <div onClick={() => setIsNavOpen(false)} className='fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.1)] md:hidden'></div>}
@@ -42,7 +45,7 @@ export default function Header() {
                 {!isLogged ? <button className='cursor-pointer'>Prijavi se</button> : <button className='cursor-pointer'>Moj profil</button>}
             </Link>
             <div onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 bg-black text-center text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md'>
-                {!isLogged ? <Link href="/signup"><button className='cursor-pointer'>Registruj se</button></Link> : <button onClick={logOut} className='cursor-pointer'>Odjavi se</button>}
+                {!isLogged ? <Link href="/signup"><button className='cursor-pointer'>Registruj se</button></Link> : <button onClick={logOutBtn} className='cursor-pointer'>Odjavi se</button>}
             </div>
         </div>
 

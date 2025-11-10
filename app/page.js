@@ -11,14 +11,14 @@ return (<main>
           <h1 className="text-4xl font-bold md:text-5xl max-w-[500px]">Pronađi <span className="text-blue-400">stručnjaka</span> za svaki posao</h1>
           <h4 className="text-md md:text-lg">Povezujemo vas sa proverenim radnicima u vašoj blizini. Brzo, sigurno i pouzdano rešavanje svih vaših potreba.</h4>    
           <div className="flex flex-col gap-5 md:flex-row">
-            <button className="flex gap-2 justify-center items-center py-2 px-5 w-[70vw] bg-black text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md md:w-[300px]">
+            <Link href="/workers" className="flex gap-2 justify-center items-center py-2 px-5 w-[70vw] bg-black text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md md:w-[300px]">
               <Users />
-              <Link href="/workers">Trazim radnika</Link>
-            </button>
-            <button className="flex gap-2 justify-center items-center py-2 px-5 w-[70vw] bg-white text-black border border-gray-300 cursor-pointer hover:bg-gray-100 rounded-md md:w-[300px]">
+              <p>Trazim radnika</p>
+            </Link>
+            <Link href="/post-job" className="flex gap-2 justify-center items-center py-2 px-5 w-[70vw] bg-white text-black border border-gray-300 cursor-pointer hover:bg-gray-100 rounded-md md:w-[300px]">
               <Wrench />
-              <Link href="/post-job">Objavi posao</Link>
-            </button>
+              <p>Objavi posao</p>
+            </Link>
           </div>
 
           <div className="flex flex-col gap-5 md:flex-row md:gap-10 mt-10">

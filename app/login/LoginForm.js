@@ -3,6 +3,8 @@ import React from 'react'
 import Link from 'next/link'
 import { Lock, Mail } from 'lucide-react'
 import { useRouter } from 'next/navigation';
+import api from '../api/api';
+import { setToken } from '../config/config';
 
 export default function LoginForm() {
   const [email, setEmail] = React.useState('')
@@ -10,15 +12,24 @@ export default function LoginForm() {
   const errorRef = React.useRef(null)
   const router = useRouter();
 
-  const logIn = (e) => {
+  const logIn = async (e) => {
     e.preventDefault()
     if(!email || !password) {
       errorRef.current.classList.remove('hidden');
       return
     }
     errorRef.current.classList.add('hidden');
-    localStorage.setItem('isLogged', true)
-    return router.push('/users/1');
+    try{
+      const response = await api.post('/login', { email, password });
+      const data = response.data;
+      console.log(data);
+      if(data.success === false) return errorRef.current.classList.remove('hidden');
+      setToken(data.token);
+      return router.push('/users/1');
+    }catch(err){
+      console.log(err);
+      if(err.response?.data?.success === false) return errorRef.current.classList.remove('hidden');
+    }
   }
   
   return (
