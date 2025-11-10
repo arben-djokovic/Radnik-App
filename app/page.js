@@ -128,12 +128,25 @@ return (<main>
       </div>
     </section>
 
-    <section className="py-20 px-5 flex flex-col items-center gap-5 bg-whit text-center">
-      <div className="flex flex-col gap-1">
-        <h2 className="text-3xl font-bold lg:text-4xl">Spremni da počnete?</h2>
-        <p>Pridružite se hiljadama zadovoljnih korisnika već danas</p>
+    <section className="py-16 px-5 bg-gray-100 text-center flex flex-col gap-10">
+      <h1 className="text-3xl font-bold">Brzi pristup</h1>
+      <div className="flex flex-col gap-5 items-stretch justify-around md:flex-row">
+        <Link href={'/workers'} className="flex flex-col gap-2 items-center md:max-w-[300px] p-10 bg-white rounded-md border border-gray-300 md:w-[100%] hover:bg-gray-50">
+          <Users size={50} className="block" color="blue" />
+          <h2 className="text-lg font-bold">Pogledaj radnike</h2>
+          <p className="text-sm">Pronadji strucnjake za sve vaše potrebe</p>
+        </Link>
+        <Link href={'/post-job'} className="flex flex-col gap-2 items-center md:max-w-[300px] p-10 bg-white rounded-md border border-gray-300 md:w-[100%] hover:bg-gray-50">
+          <Wrench size={50} className="block" color="green" />
+          <h2 className="text-lg font-bold">Objavi posao</h2>
+          <p className="text-sm">Opisite posao i dobijte ponude od strucnjaka</p>
+        </Link>
+        <Link href={'/jobs'} className="flex flex-col gap-2 items-center md:max-w-[300px] p-10 bg-white rounded-md border border-gray-300 md:w-[100%] hover:bg-gray-50">
+          <Star size={50} className="block" color="gold" />
+          <h2 className="text-lg font-bold">Dostupni poslovi</h2>
+          <p className="text-sm">Pogledajte poslove i prijavite se za one koji vas zanimaju</p>
+        </Link>
       </div>
-      <button className="max-w-[600px] w-full py-1 bg-black text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md"><Link href="/signup">Napravi nalog</Link></button>
     </section>
   </main>
   );
