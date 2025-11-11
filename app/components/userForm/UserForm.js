@@ -3,8 +3,12 @@ import React from 'react'
 import ChooseType from './ChooseType'
 import Form from './Form'
 import Category from './Category'
+import api from '@/app/api/api'
+import { setToken } from '@/app/config/config'
+import { useRouter } from 'next/navigation'
 
 export default function UserForm({ isEdit, user }) {
+    const router = useRouter();
     const [isChooseType, setIsChooseType] = React.useState(true)
     const [isForm, setIsForm] = React.useState(false)
     const [isCategory, setIsCategory] = React.useState(false)
@@ -20,17 +24,40 @@ export default function UserForm({ isEdit, user }) {
 
     const finishRegistration = () => {
       let user = {
-        name: name,
+        fullName: name,
         email: email,
         password: password,
         phone: phone,
         city: city,
         about: about,
-        categories: categories,
-        type: type
+        categories: [],
+        role: type
       }
-      console.log(user);
+      if(!isEdit){
+        console.log(password)
+        registerUser(user);
+      }else{
+
+      }
     }
+
+    const registerUser = async (user) => {
+      console.log(user)
+      try {
+        const response = await api.post('/register', user);
+        const data = await response.data;
+        if(!data || data.success === false || !data.token) return console.log(data);
+        setToken(data.token);
+        return router.push('/users/1');
+      } catch (error) {
+        if(error.response?.data?.message === "Validation failed. Please check the following fields."){
+          error.response?.data?.failedFields.forEach((field) => {
+            alert(field.message);
+          })
+        }
+        console.log(error);
+      }
+    };
 
   return (
     <div className='bg-bg-blue h-full min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center gap-6 p-5'>
