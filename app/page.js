@@ -1,10 +1,22 @@
 import { Clock, Droplets, Hammer, Paintbrush, Settings, Shield, Star, Users, Wrench, Zap } from "lucide-react";
 import Link from "next/link";
+import api from "./api/api";
+import { categoryIcons } from "./config/categoryIcons.config";
 
 //fetch songs
 
 export default async function Home() {
-    
+  let categories = [];
+  try{
+    const response = await api.get('/categories?limit=7');
+    const data = await response.data;
+    if(!data || data.success === false) return console.log(data);
+    categories = data.categories
+    console.log(categories)
+  }catch(err){
+    console.log(err)
+  }
+
 return (<main>
     <section className="bg-bg-blue flex flex-col items-center justify-center text-center p-16 min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)]">
        <div className="flex flex-col items-center justify-center gap-5 max-w-[700px]">
@@ -61,46 +73,20 @@ return (<main>
       </div>
     </section>
 
-    <section className="py-16 px-5 flex flex-col gap-14 bg-bg-blue text-center">
+    <section className="py-16 px-15 flex flex-col gap-14 bg-bg-blue text-center">
       <h2 className="text-3xl font-bold lg:text-4xl">Popularne kategorije</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-5 lg:flex lg:flex-row lg:justify-center lg:gap-10">
-        <Link href="/workers?category=vodoinstalateri" className="bg-white rounded-xl flex flex-col gap-3 items-center justify-center py-10 px-5 border border-gray-300 hover:shadow-md cursor-pointer transition">
-          <Droplets className="text-blue-600 block lg:hidden" size={35}  />
-          <Droplets className="text-blue-600 hidden lg:block" size={50}  />
-          <h4 className="text-sm font-bold">Vodoinstalateri</h4>
-          <p className="text-[0.8rem] bg-gray-100 px-2 text-nowrap rounded-md text-black">245+ radnika</p>
-        </Link>
-        <Link href="/workers?category=elektricari" className="bg-white rounded-xl flex flex-col gap-3 items-center justify-center py-10 px-5 border border-gray-300 hover:shadow-md cursor-pointer transition">
-          <Zap className="text-blue-600 block lg:hidden" size={35}  />
-          <Zap className="text-blue-600 hidden lg:block" size={50}  />
-          <h4 className="text-sm font-bold">Elektricari</h4>
-          <p className="text-[0.8rem] bg-gray-100 px-2 text-nowrap rounded-md text-black">189+ radnika</p>
-        </Link>
-        <Link href="/workers?category=moleri" className="bg-white rounded-xl flex flex-col gap-3 items-center justify-center py-10 px-5 border border-gray-300 hover:shadow-md cursor-pointer transition">
-          <Paintbrush className="text-blue-600 block lg:hidden" size={35}  />
-          <Paintbrush className="text-blue-600 hidden lg:block" size={50}  />
-          <h4 className="text-sm font-bold">Moleri</h4>
-          <p className="text-[0.8rem] bg-gray-100 px-2 text-nowrap rounded-md text-black">156+ radnika</p>
-        </Link>
-        <Link href="/workers?category=stolarija" className="bg-white rounded-xl flex flex-col gap-3 items-center justify-center py-10 px-5 border border-gray-300 hover:shadow-md cursor-pointer transition">
-          <Hammer className="text-blue-600 block lg:hidden" size={35}  />
-          <Hammer className="text-blue-600 hidden lg:block" size={50}  />
-          <h4 className="text-sm font-bold">Stolarija</h4>
-          <p className="text-[0.8rem] bg-gray-100 px-2 text-nowrap rounded-md text-black">134+ radnika</p>
-        </Link>
-        <Link href="/workers?category=klimatizacija" className="bg-white rounded-xl flex flex-col gap-3 items-center justify-center py-10 px-5 border border-gray-300 hover:shadow-md cursor-pointer transition">
-          <Settings className="text-blue-600 block lg:hidden" size={35}  />
-          <Settings className="text-blue-600 hidden lg:block" size={50}  />
-          <h4 className="text-sm font-bold">Klimatizacija</h4>
-          <p className="text-[0.8rem] bg-gray-100 px-2 text-nowrap rounded-md text-black">98+ radnika</p>
-        </Link>
-        <Link href="/workers?category=opsti_radovi" className="bg-white rounded-xl flex flex-col gap-3 items-center justify-center py-10 px-5 border border-gray-300 hover:shadow-md cursor-pointer transition">
-          <Wrench className="text-blue-600 block lg:hidden" size={35}  />
-          <Wrench className="text-blue-600 hidden lg:block" size={50}  />
-          <h4 className="text-sm font-bold">Opsti radovi</h4>
-          <p className="text-[0.8rem] bg-gray-100 px-2 text-nowrap rounded-md text-black">312+ radnika</p>
-        </Link>
-
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-5 lg:flex lg:justify-around lg:gap-10">
+        {categories.map((category) => {
+          const Icon = categoryIcons[category.slug]
+          return(
+          <Link key={category._id} href={`/workers?category=${category._id}`} className="bg-white rounded-xl flex flex-col gap-3 items-center justify-center py-10 px-5 border border-gray-300 hover:shadow-md cursor-pointer transition lg:flex-1 lg:w-[10%]">
+            {Icon && <Icon className="text-blue-600 block lg:hidden" size={35}  />}
+            {Icon && <Icon className="text-blue-600 hidden lg:block" size={50}  />}
+            <h4 className="text-sm font-bold">{category.name}</h4>
+            {/* <p className="text-[0.8rem] bg-gray-100 px-2 text-nowrap rounded-md text-black">245+ radnika</p> */}
+          </Link>
+          )
+        })}
       </div>
     </section>
 

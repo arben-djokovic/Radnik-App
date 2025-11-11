@@ -20,7 +20,7 @@ export default function UserForm({ isEdit, user }) {
     const [phone, setPhone] = React.useState(user?.phone || '');
     const [city, setCity] = React.useState(user?.city || '');
     const [about, setAbout] = React.useState(user?.about || '');
-    const [categories, setCategories] = React.useState(user?.categories || []);
+    const [selectedCategories, setSelectedCategories] = React.useState(user?.categories || []);
 
     const finishRegistration = () => {
       let user = {
@@ -30,7 +30,7 @@ export default function UserForm({ isEdit, user }) {
         phone: phone,
         city: city,
         about: about,
-        categories: [],
+        categories: selectedCategories || [],
         role: type
       }
       if(!isEdit){
@@ -64,7 +64,7 @@ export default function UserForm({ isEdit, user }) {
       <div className='bg-white border border-gray-300 p-8 rounded-lg shadow-md flex flex-col gap-2 w-full max-w-xl'>
         {isChooseType && <ChooseType isEdit={isEdit} type={type} setType={setType} setIsChooseType={setIsChooseType} setIsForm={setIsForm} />}
         {isForm && type !== null && <Form isEdit={isEdit} type={type} setIsChooseType={setIsChooseType} setIsForm={setIsForm} setIsCategory={setIsCategory} finishRegistration={finishRegistration} setName={setName} setEmail={setEmail} setPassword={setPassword} setPhone={setPhone} setCity={setCity} name={name} email={email} password={password} phone={phone} city={city} />}
-        {isCategory && type === 'worker' && <Category isEdit={isEdit} setIsChooseType={setIsChooseType} setIsCategory={setIsCategory} setIsForm={setIsForm} finishRegistration={finishRegistration} categories={categories} setCategories={setCategories} about={about} setAbout={setAbout} />}
+        {isCategory && type === 'worker' && <Category isEdit={isEdit} setIsChooseType={setIsChooseType} setIsCategory={setIsCategory} setIsForm={setIsForm} finishRegistration={finishRegistration} selectedCategories={selectedCategories} setSelectedCategories={setSelectedCategories} about={about} setAbout={setAbout} />}
       </div>
     </div>
   )

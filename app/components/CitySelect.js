@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function CitySelect({ selectedCity, setSelectedCity }) {
   const cities = ["Podgorica", "Nikšić", "Bar", "Budva", "Herceg Novi", "Cetinje", "Tuzi", "Pljevlja", "Bijelo Polje", "Berane", "Tivat", "Ulcinj", "Rožaje", "Kotor", "Zeta", "Danilovgrad", "Mojkovac", "Plav", "Kolašin", "Žabljak", "Plužine", "Andrijevica", "Šavnik"];
-
+  
   return (
     <div className="w-full">
       <Listbox value={selectedCity} onChange={setSelectedCity}>
