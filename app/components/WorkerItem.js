@@ -17,7 +17,7 @@ export default function WorkerItem({worker}) {
         <div className='flex gap-3 items-center'>
             <div className='flex gap-1 items-center'>
                 <StarIcon size={20} color='gold' />
-                <p>4.8 (8 recenzija)</p>
+                <p>{worker.averageRating} ({worker.totalReviews} recenzija)</p>
             </div>
             <div className='flex gap-1 items-center'>
                 <MapPin size={20} />

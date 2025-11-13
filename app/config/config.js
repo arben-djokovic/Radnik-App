@@ -1,3 +1,5 @@
+import { jwtDecode } from "jwt-decode";
+
 // app/config/config.js
 export const getToken = () => {
   if (typeof window === 'undefined') return undefined;
@@ -22,3 +24,16 @@ export const isLogged = () => {
   if (typeof window === 'undefined') return false;
   return !!localStorage.getItem('token');
 };
+
+export const getDecodedToken = () => {
+  try{
+    const token = getToken();
+    if(!token) return null;
+    const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
+    return decodedToken
+  }catch(err){
+    console.log(err)
+    return null
+  }
+}

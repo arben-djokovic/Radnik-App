@@ -2,21 +2,21 @@ import { Briefcase, Calendar, CircleUserRound, Edit, MapPin, Phone, StarIcon } f
 import Link from 'next/link'
 import React from 'react'
 
-export default function ProfileHeader({isMe, role}) {
+export default function ProfileHeader({isMe, user}) {
   return (
     <div className='border border-gray-300 p-5 rounded-md w-full flex flex-col gap-5'>
         <div className='flex gap-5 w-full'>
             <CircleUserRound size={100} />
             <div className='flex gap-2 flex-col text-sm'>
-                <h1 className='text-2xl mt-2 font-bold'>Marko Jovanovic</h1>
+                <h1 className='text-2xl mt-2 font-bold'>{user.fullName}</h1>
                 <div className='flex gap-1 items-center text-gray-600'>
                     <MapPin size={20} />
-                    <p>Novi Sad, Srbija</p>
+                    <p>{user.city}, {user.country}</p>
                 </div>
-                {role === 'worker' && <div className='flex items-start gap-3 text-gray-600 flex-col md:items-center md:flex-row'>
+                {user.role === 'worker' && <div className='flex items-start gap-3 text-gray-600 flex-col md:items-center md:flex-row'>
                     <div className='flex gap-1 items-center'>
                         <StarIcon size={20} color='gold' />
-                        <p>4.8 (8 recenzija)</p>
+                        <p>{user.averageRating} ({user.totalReviews} recenzija)</p>
                     </div>
                     <div className='flex gap-1 items-center'>
                         <Briefcase size={20} color='black' />
@@ -33,11 +33,11 @@ export default function ProfileHeader({isMe, role}) {
             </div>
         </div>
         <div className='flex items-center gap-1'>
-            {!isMe && <Link href={`tel:+38269405596`} className='bg-black text-white w-full p-1.5 rounded-md text-center flex items-center justify-center gap-2'>
+            {!isMe && <Link href={`tel:${user.phone}`} className='bg-black text-white w-full p-1.5 rounded-md text-center flex items-center justify-center gap-2'>
                 <Phone size={20} />
                 <p>Pozovi</p>
             </Link>}
-            {isMe && <><Link href="/users/1/edit" className='bg-white w-full text-black p-1.5 rounded-md text-center flex items-center justify-center gap-2 border border-black whitespace-nowrap'>
+            {isMe && <><Link href={`/users/${user._id}/edit`} className='bg-white w-full text-black p-1.5 rounded-md text-center flex items-center justify-center gap-2 border border-black whitespace-nowrap'>
                 <Edit size={20} />
                 <p>Uredi profil</p>
             </Link>

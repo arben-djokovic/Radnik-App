@@ -5,13 +5,13 @@ import React, { useEffect } from 'react'
 import Nav from './Nav';
 import Link from 'next/link';
 import Logo from './Logo';
-import { usePathname, useRouter } from 'next/navigation';
-import { logOut, isLogged as isLoggedCheck } from '../config/config';
+import { useRouter } from 'next/navigation';
+import { logOut, isLogged as isLoggedCheck, getDecodedToken } from '../config/config';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = React.useState(false);
-    const [isLogged, setIsLogged] = React.useState(isLoggedCheck());
-    const pathname = usePathname();
+    const [isLogged, setIsLogged] = React.useState(null);
+    const [myId, setMyId] = React.useState(null);
     const router = useRouter();
 
     const logOutBtn = () => {
@@ -20,6 +20,9 @@ export default function Header() {
     }
 
     useEffect(() => {
+        const token = getDecodedToken();
+        setMyId(token?._id);
+        setIsLogged(isLoggedCheck())
         const handleStorageChange = () => setIsLogged(isLoggedCheck());
         window.addEventListener('storage', handleStorageChange);
         return () => window.removeEventListener('storage', handleStorageChange);
@@ -41,7 +44,7 @@ export default function Header() {
 
         <div className={`${isNavOpen ? 'block' : 'hidden'} flex flex-col gap-3 py-7 px-2 border-b border-gray-300 md:flex md:border-0 md:flex-row md:p-0 md:gap-[2%]`}>           
            
-           <Link href={!isLogged ? '/login' : '/users/1'} onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 text-center border border-gray-300 cursor-pointer hover:bg-gray-100 rounded-md'>
+           <Link href={!isLogged ? '/login' : `/users/${myId}`} onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 text-center border border-gray-300 cursor-pointer hover:bg-gray-100 rounded-md'>
                 {!isLogged ? <button className='cursor-pointer'>Prijavi se</button> : <button className='cursor-pointer'>Moj profil</button>}
             </Link>
             <div onClick={() => setIsNavOpen(false)} className='w-full min-w-[100px] py-1 bg-black text-center text-white border border-black cursor-pointer hover:bg-gray-800 rounded-md'>
