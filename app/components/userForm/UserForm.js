@@ -1,5 +1,4 @@
-'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ChooseType from './ChooseType'
 import Form from './Form'
 import Category from './Category'
@@ -13,42 +12,41 @@ export default function UserForm({ isEdit, user }) {
     const [isForm, setIsForm] = React.useState(false)
     const [isCategory, setIsCategory] = React.useState(false)
 
-    const [type, setType] = React.useState(user?.type || '');
-    const [name, setName] = React.useState(user?.name || '');
+    const [type, setType] = React.useState(user?.role);
+    const [name, setName] = React.useState(user?.fullName || '');
     const [email, setEmail] = React.useState(user?.email || '');
     const [password, setPassword] = React.useState('');
     const [phone, setPhone] = React.useState(user?.phone || '');
     const [city, setCity] = React.useState(user?.city || '');
     const [about, setAbout] = React.useState(user?.about || '');
-    const [selectedCategories, setSelectedCategories] = React.useState(user?.categories || []);
+    const [selectedCategories, setSelectedCategories] = React.useState(user?.categoriesId || []);
 
     const finishRegistration = () => {
-      let user = {
+      let newUser = {
+        _id: user?._id,
         fullName: name,
         email: email,
         password: password,
         phone: phone,
         city: city,
         about: about,
-        categories: selectedCategories || [],
+        categories: selectedCategories,
         role: type
       }
       if(!isEdit){
-        console.log(password)
-        registerUser(user);
+        registerUser(newUser);
       }else{
-
+        editUser(newUser);
       }
     }
 
-    const registerUser = async (user) => {
-      console.log(user)
+    const registerUser = async (newUser) => {
       try {
-        const response = await api.post('/register', user);
+        const response = await api.post('/register', newUser);
         const data = await response.data;
         if(!data || data.success === false || !data.token) return console.log(data);
         setToken(data.token);
-        return router.push('/users/1');
+        return router.push(`/users/${data.user._id}`);
       } catch (error) {
         if(error.response?.data?.message === "Validation failed. Please check the following fields."){
           error.response?.data?.failedFields.forEach((field) => {
@@ -58,6 +56,29 @@ export default function UserForm({ isEdit, user }) {
         console.log(error);
       }
     };
+
+    const editUser = async (newUser) => {
+      try {
+        const response = await api.put(`/users/${newUser._id}`, newUser);
+        const data = await response.data;
+        if(!data || data.success === false) return console.log(data);
+        return router.push(`/users/${data.user._id}`);
+      } catch (error) {
+        if(error.response?.data?.message === "Validation failed. Please check the following fields."){
+          error.response?.data?.failedFields.forEach((field) => {
+            alert(field.message);
+          })
+        }
+        console.log(error);
+      }
+    };
+
+    useEffect(() => {
+      if(user.categoriesId?.length > 0){
+        const categoriesIds = user.categoriesId.map(cat => cat._id);
+        setSelectedCategories(categoriesIds);
+      }
+    }, [user])
 
   return (
     <div className='bg-bg-blue h-full min-h-[calc(100vh-64px)] md:min-h-[calc(100vh-56px)] flex flex-col justify-center items-center gap-6 p-5'>

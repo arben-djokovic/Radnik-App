@@ -30,10 +30,21 @@ export const getDecodedToken = () => {
     const token = getToken();
     if(!token) return null;
     const decodedToken = jwtDecode(token);
-    console.log(decodedToken);
     return decodedToken
   }catch(err){
     console.log(err)
     return null
   }
+}
+
+export const formatJoinDate = (dateString) => {
+  const date = new Date(dateString);
+
+  const formattedDate = date.toLocaleDateString('sr-Latn-RS', {
+    month: 'short',
+    year: 'numeric'
+  });
+  const str = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+
+  return str
 }

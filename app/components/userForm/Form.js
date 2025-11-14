@@ -129,7 +129,7 @@ export default function Form({ isEdit, setIsChooseType, setIsForm, type, setIsCa
                 Nazad
             </button>
             <button onClick={next} className="w-full bg-black text-white py-1 rounded-md cursor-pointer mt-2 hover:bg-gray-800">
-                {type === 'worker' ? 'Nastavi' : 'Napravi nalog'}
+                {type === 'worker' ? 'Nastavi' : `${isEdit ? 'Izmijeni' : 'Napravi'} nalog`}
             </button>
         </div>
       </div>

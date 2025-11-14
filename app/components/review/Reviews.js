@@ -10,7 +10,6 @@ export default function Reviews() {
             <ReviewItem />
             <ReviewItem />
             <ReviewItem />
-            <ReviewItem />
         </div>
     </div>
   )

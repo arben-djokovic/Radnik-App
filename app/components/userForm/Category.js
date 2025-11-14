@@ -38,13 +38,14 @@ export default function Category({ isEdit, setIsCategory, selectedCategories, se
                 const data = await response.data;
                 if (!data || data.success === false) return console.log(data);
                 setCategories(data.categories);
-                console.log(categories)
             }catch(err){
                 console.log(err)
             }
         }
         getCategories();
+        console.log(selectedCategories)
     }, [])
+
   return (
     <div className="flex flex-col gap-2">
       <h2 className="text-2xl font-bold">Izaberite kategorije</h2>

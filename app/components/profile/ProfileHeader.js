@@ -1,3 +1,4 @@
+import { formatJoinDate } from '@/app/config/config'
 import { Briefcase, Calendar, CircleUserRound, Edit, MapPin, Phone, StarIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -20,15 +21,15 @@ export default function ProfileHeader({isMe, user}) {
                     </div>
                     <div className='flex gap-1 items-center'>
                         <Briefcase size={20} color='black' />
-                        <p>87 zavrsenih poslova</p>
+                        <p>{user.totalCompletedJobs} zavrsenih poslova</p>
                     </div>
                 </div>}
                 <div className='flex items-start flex-col gap-2 text-gray-600 md:flex-row md:items-center'>
                     <div className='flex gap-1 items-center'>
                         <Calendar size={20} />
-                        <p>Clan od Mart, 2022</p>
+                        <p>Clan od {formatJoinDate(user.createdAt)}</p>
                     </div>
-                    <p>12 objavjenih poslova</p>
+                    <p>{user.totalPostedJobs} objavjenih poslova</p>
                 </div>
             </div>
         </div>
