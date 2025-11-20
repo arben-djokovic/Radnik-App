@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 import React, { Suspense } from "react";
 import WorkersFilters from "./WorkersFilters";
 import WorkerItem from "../components/WorkerItem";
