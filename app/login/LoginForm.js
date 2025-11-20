@@ -25,7 +25,7 @@ export default function LoginForm() {
       console.log(data);
       if(data.success === false) return errorRef.current.classList.remove('hidden');
       setToken(data.token);
-      return router.push('/users/1');
+      return router.push(`/users/${data.user._id}`);
     }catch(err){
       console.log(err);
       if(err.response?.data?.success === false) return errorRef.current.classList.remove('hidden');

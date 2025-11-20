@@ -3,7 +3,8 @@ import { Briefcase, Calendar, CircleUserRound, Edit, MapPin, Phone, StarIcon } f
 import Link from 'next/link'
 import React from 'react'
 
-export default function ProfileHeader({isMe, user}) {
+export default function ProfileHeader({ user}) {
+    const isMe = false
   return (
     <div className='border border-gray-300 p-5 rounded-md w-full flex flex-col gap-5'>
         <div className='flex gap-5 w-full'>

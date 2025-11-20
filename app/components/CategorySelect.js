@@ -1,9 +1,25 @@
 "use client";
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from "@headlessui/react";
 import { Check, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
+import api from "../api/api";
 
 export default function CategorySelect({ selectedCategory, setSelectedCategory }) {
-  const categories = ["Vodoinstalateri", "Električari", "Moleri", "Stolarija", "Klimatizacija", "Opšti radovi"];
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await api.get("/categories");
+        const data = await response.data;
+        if (!data || data.success === false) return console.log(data);
+        setCategories(data.categories);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   return (
     <div className="w-full">
@@ -20,7 +36,7 @@ export default function CategorySelect({ selectedCategory, setSelectedCategory }
             {categories.map((category, index) => (
               <ListboxOption
                 key={index}
-                value={category}
+                value={category.name}
                 className={({ active }) =>
                   `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                     active ? "bg-blue-100 text-blue-900" : "text-gray-900"
@@ -30,7 +46,7 @@ export default function CategorySelect({ selectedCategory, setSelectedCategory }
                 {({ selected }) => (
                   <>
                     <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
-                      {category}
+                      {category.name}
                     </span>
                     {selected ? (
                       <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-600">

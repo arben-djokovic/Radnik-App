@@ -24,10 +24,10 @@ export default function JobItem({noButtons}) {
         </div>
         <p>Potrebno je popraviti slavinu u kuhinji koja curi. Slavina je stara oko 5 godina, mislim da treba zameniti zaptivač. Hitno je jer se voda troši nepotrebno. Mogu da obezbedim materijal ako je potrebno.</p>
         <div className='flex flex-col gap-3'>
-            <div className='flex gap-2 cursor-pointer hover:opacity-80'>
+            <Link href={'/users/1'} className='flex gap-2 cursor-pointer hover:opacity-80'>
                 <CircleUserRound size={45} />
                 <p>Marko Jovanovic</p>
-            </div>
+            </Link>
             {!noButtons &&
             <div className='flex md:flex-row flex-col gap-2'>
                 <Link href={'/jobs/1'} className='bg-black text-white border border-black py-1 px-3 rounded-md text-center cursor-pointer hover:bg-gray-800 w-full'>Prijavi se</Link>
