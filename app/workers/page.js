@@ -22,8 +22,7 @@ async function getWorkers(searchParams) {
 }
 
 
-export default async function WorkersPage({ searchParams: searchParamsPromise }) {
-  const searchParams = await searchParamsPromise;
+export default async function WorkersPage({ searchParams }) {
   const data = await getWorkers(searchParams);
   const workers = data?.workers || [];
 
@@ -39,7 +38,7 @@ export default async function WorkersPage({ searchParams: searchParamsPromise })
       </div>
       <div className="w-full max-w-5xl flex flex-col gap-5">
         <WorkersFilters />
-        <p className="text-gray-500 text-md">Pronađeno 6 radnika</p>
+        <p className="text-gray-500 text-md">Pronađeno {workers.length} radnika</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-full">
           {workers.map(worker => <WorkerItem key={worker._id} worker={worker} />)}
         </div>

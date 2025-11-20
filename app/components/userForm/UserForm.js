@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect } from 'react'
 import ChooseType from './ChooseType'
 import Form from './Form'
